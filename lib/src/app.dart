@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './icons/custom_icons.dart';
 
 class App extends StatelessWidget {
   @override
@@ -16,13 +17,26 @@ class App extends StatelessWidget {
   Widget buildNavigator() {
     return BottomNavigationBar(
       items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.blue,), title: Text('Home',style: TextStyle(color: Colors.blue),)),
-        BottomNavigationBarItem(icon: Icon(Icons.local_mall,color: Colors.blue), title: Text('Mall',style: TextStyle(color: Colors.blue),)),
-        BottomNavigationBarItem(icon: Icon(Icons.add_a_photo,color: Colors.blue), title: Text('Scan',style: TextStyle(color: Colors.blue),)),
-        BottomNavigationBarItem(icon: Icon(Icons.attach_money,color: Colors.blue), title: Text('Bank',style: TextStyle(color: Colors.blue),)),
-        BottomNavigationBarItem(icon: Icon(Icons.message,color: Colors.blue,), title: Text('Inbox',style: TextStyle(color: Colors.blue),)),
+        iconBuilder(Icons.home, 'Home'),
+        iconBuilder(Icons.local_mall, 'Mall'),
+        iconBuilder(Custom.qr_code, 'Scan'),
+        iconBuilder(Icons.attach_money, 'Bank'),
+        iconBuilder(Icons.message, 'Inbox')
       ],
+      type: BottomNavigationBarType.fixed,
+    );
+  }
 
+  BottomNavigationBarItem iconBuilder(IconData icon, String text) {
+    return new BottomNavigationBarItem(
+      icon: Icon(
+        icon,
+        color: Colors.blue,
+      ),
+      title: Text(
+        '$text',
+        style: TextStyle(color: Colors.blue),
+      ),
     );
   }
 }
